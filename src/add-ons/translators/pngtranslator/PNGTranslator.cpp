@@ -572,7 +572,7 @@ translate_from_png_to_bits(BPositionIO *inSource, BPositionIO *outDestination,
 		png_uint_32 width, height;
 		int bit_depth, color_type, interlace_type;
 		png_get_IHDR(ppng, pinfo, &width, &height, &bit_depth, &color_type,
-			&interlace_type, int_p_NULL, int_p_NULL);
+			&interlace_type, 0, 0);
 		
 		// Setup image transformations to make converting it easier
 		bool balpha = false;
@@ -711,9 +711,9 @@ translate_from_png_to_bits(BPositionIO *inSource, BPositionIO *outDestination,
 		
 		// free PNG handle / info structures
 		if (!pinfo)
-			png_destroy_read_struct(&ppng, png_infopp_NULL, png_infopp_NULL);
+			png_destroy_read_struct(&ppng, 0, 0);
 		else
-			png_destroy_read_struct(&ppng, &pinfo, png_infopp_NULL);
+			png_destroy_read_struct(&ppng, &pinfo, 0);
 	}
 
 	return result;
@@ -1152,7 +1152,7 @@ translate_from_bits_to_png(BPositionIO *inSource, BPositionIO *outDestination,
 		
 		// free PNG handle / info structures
 		if (!pinfo)
-			png_destroy_write_struct(&ppng, png_infopp_NULL);
+			png_destroy_write_struct(&ppng, 0);
 		else
 			png_destroy_write_struct(&ppng, &pinfo);
 	}
