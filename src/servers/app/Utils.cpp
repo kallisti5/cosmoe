@@ -114,7 +114,7 @@ BString MsgCodeToBString(int32 code)
 	return bstring;
 }
 
-status_t ConvertModeToDisplayMode(uint32 mode, display_mode *dmode)
+status_t ConvertModeToDisplayMode(int mode, display_mode *dmode)
 {
 	if(!mode)
 		return B_BAD_VALUE;

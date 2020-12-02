@@ -76,7 +76,6 @@ void CalcEngine::DoCommand(ulong what)
 			}
 			SetValue(0.0);
 			break;
-		case '¹':
 		case 'p':
 		case 'pi':
 			SetValue(M_PI);
