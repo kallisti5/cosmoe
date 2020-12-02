@@ -73,11 +73,8 @@ AC_CHECK_HEADER(sys/xattr.h,
   AC_MSG_WARN([
 *** This build of Cosmoe will not support attributes.]))
 
-AC_CHECK_PROG(FREETYPE_CONFIG, freetype-config, yes)
-if eval "test x$FREETYPE_CONFIG != xyes"; then
-   AC_MSG_ERROR([
-*** Cosmoe requires libfreetype version 2.0 or later.])
-fi
+PKG_CHECK_MODULES(libfreetype2, freetype2, ,
+  AC_MSG_ERROR([Cosmoe requires libfreetype version 2.0 or later.]))
 
 dnl Checks for typedefs, structures, and compiler characteristics.
 AC_C_CONST
